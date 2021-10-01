@@ -1,6 +1,7 @@
 package com.galvanize.tmo.paspringstarter;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,7 +45,7 @@ public class LibraryController {
      * @param Book The book to be added to the library
      * @return The same book object, with an additional unique identifier
      */
-    @PostMapping("/api/books")
+    @PostMapping(value = "/api/books", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public Book createBook(@RequestBody Book newBook) {
         newBook.id = getBookId();
         
