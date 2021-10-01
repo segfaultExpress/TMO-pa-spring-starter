@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LibraryController {
 
     @GetMapping("/health")
-    public void health() {
-
+    public String health() {
+        return "Hello World!";
     }
 }
