@@ -43,12 +43,12 @@ public class LibraryController {
      * @return The same book object, with an additional unique identifier
      */
     @PostMapping(value = "/api/books", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public Book createBook(@RequestBody Book newBook) {
+    public ResponseEntity<Book> createBook(@RequestBody Book newBook) {
         newBook.id = getBookId();
         
-        LibraryBooks.books.add(newBook);
+        LibraryBooks.add(newBook);
 
-        return newBook;
+        return new ResponseEntity<Book>(newBook, HttpStatus.CREATED);
     }
 
     /**
