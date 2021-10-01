@@ -2,9 +2,9 @@ package com.galvanize.tmo.paspringstarter;
 
 public class Book {
     public int id;
-    private String name;
-    private String title;
-    private String yearPublished;
+    public String name;
+    public String title;
+    public String yearPublished;
 
     public Book(int id, String name, String title, String yearPublished) {
         this.id = id;

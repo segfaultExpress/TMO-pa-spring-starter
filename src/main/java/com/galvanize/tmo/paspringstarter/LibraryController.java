@@ -9,15 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.galvanize.tmo.paspringstarter.Book;
 
 @RestController
 public class LibraryController {
 
-    public List<Book> LibraryBooks = new ArrayList<Book>();
+    public Library LibraryBooks = new Library();
 
     /**
      * Health check, used for checking api is up
@@ -26,7 +23,7 @@ public class LibraryController {
      */
     @GetMapping("/health")
     public String health() {
-        return "Hello World!";
+        return "Hello World! v0.1";
     }
 
 
@@ -36,7 +33,7 @@ public class LibraryController {
      * @return A list of all books added
      */
     @GetMapping("/api/books")
-    public List<Book> getBooks() {
+    public Library getBooks() {
         return LibraryBooks;
     }
 
@@ -49,7 +46,7 @@ public class LibraryController {
     public Book createBook(@RequestBody Book newBook) {
         newBook.id = getBookId();
         
-        LibraryBooks.add(newBook);
+        LibraryBooks.books.add(newBook);
 
         return newBook;
     }
@@ -61,7 +58,7 @@ public class LibraryController {
      */
     @DeleteMapping("/api/books")
     public ResponseEntity<HttpStatus> deleteBooks() {
-        LibraryBooks.clear();
+        LibraryBooks.books.clear();
         return new ResponseEntity<HttpStatus>(HttpStatus.NO_CONTENT);
     }
 
@@ -71,6 +68,6 @@ public class LibraryController {
      * @return A unique id for a book object
      */
     public int getBookId() {
-        return LibraryBooks.size() + 1;
+        return LibraryBooks.books.size() + 1;
     }
 }
