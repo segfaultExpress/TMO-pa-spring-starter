@@ -23,7 +23,7 @@ public class LibraryController {
      */
     @GetMapping("/health")
     public String health() {
-        return "Hello World! v0.1";
+        return "Hello World! v0.2";
     }
 
 
